@@ -1,13 +1,13 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  string: 
-  string: 
-  string: 
-  references: 
+  name: MyString
+  email: MyString
+  password: MyString
+  house: one
 
 two:
-  string: 
-  string: 
-  string: 
-  references: 
+  name: MyString
+  email: MyString
+  password: MyString
+  house: two
