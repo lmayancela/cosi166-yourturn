@@ -3,6 +3,8 @@ Rails.application.routes.draw do
   get 'static_pages/appliance'
   get 'static_pages/bill'
   get 'static_pages/setting'
+  get "sign_up", to: "registrations#new"
+  post "sign_up", to: "registrations#create"
   resources :houses
   resources :users
   root 'static_pages#home'
