@@ -12,4 +12,7 @@ class StaticPagesController < ApplicationController
 
   def setting
   end
+
+  def contact
+  end
 end
