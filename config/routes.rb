@@ -1,4 +1,9 @@
 Rails.application.routes.draw do
+  resources :bill_records
+  resources :task_records
+  resources :bills
+  resources :appliances
+  resources :tasks
   get 'users/new'
   root 'static_pages#home'
   get '/bill', to: 'static_pages#bill'
