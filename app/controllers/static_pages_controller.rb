@@ -4,10 +4,10 @@ class StaticPagesController < ApplicationController
     @houses = House.all
   end
 
-  def appliance
+  def house_appliance
   end
 
-  def bill
+  def billing
   end
 
   def setting

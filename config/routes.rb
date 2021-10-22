@@ -6,8 +6,8 @@ Rails.application.routes.draw do
   resources :tasks
   get 'users/new'
   root 'static_pages#home'
-  get '/bill', to: 'static_pages#bill'
-  get '/appliance', to: 'static_pages#appliance'
+  get '/billing', to: 'static_pages#billing'
+  get '/house_appliance', to: 'static_pages#appliance'
   get '/setting', to: 'static_pages#setting'
   get '/contact', to: 'static_pages#contact'
   get '/signup', to: 'users#new'
