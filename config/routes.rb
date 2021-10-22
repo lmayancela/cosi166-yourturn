@@ -1,4 +1,9 @@
 Rails.application.routes.draw do
+  resources :bill_records
+  resources :task_records
+  resources :bills
+  resources :appliances
+  resources :tasks
   get 'static_pages/home'
   get 'static_pages/appliance'
   get 'static_pages/bill'
