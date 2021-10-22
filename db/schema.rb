@@ -70,6 +70,7 @@ ActiveRecord::Schema.define(version: 2021_10_19_181855) do
     t.string "name"
     t.string "email"
     t.string "password"
+    t.string "password_confirmation"
     t.integer "house_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
