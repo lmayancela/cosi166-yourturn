@@ -65,6 +65,7 @@ GEM
     autoprefixer-rails (10.3.3.0)
       execjs (~> 2)
     awesome_print (1.9.2)
+    bcrypt (3.1.13)
     better_errors (2.9.1)
       coderay (>= 1.0.0)
       erubi (>= 1.0.0)
@@ -168,6 +169,7 @@ GEM
     rb-inotify (0.10.1)
       ffi (~> 1.0)
     regexp_parser (2.1.1)
+    rexml (3.2.5)
     rubyzip (2.3.2)
     sass-rails (6.0.0)
       sassc-rails (~> 2.1, >= 2.1.1)
@@ -226,6 +228,7 @@ PLATFORMS
 
 DEPENDENCIES
   awesome_print
+  bcrypt (= 3.1.13)
   better_errors
   bootsnap (>= 1.4.4)
   bootstrap-sass (= 3.4.1)
@@ -240,6 +243,7 @@ DEPENDENCIES
   puma (~> 5.0)
   rack-mini-profiler (~> 2.0)
   rails (~> 6.1.4, >= 6.1.4.1)
+  rexml
   sass-rails (>= 6)
   selenium-webdriver
   spring
