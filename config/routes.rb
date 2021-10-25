@@ -4,10 +4,11 @@ Rails.application.routes.draw do
   resources :bills
   resources :appliances
   resources :tasks
+  resources :users
   get 'users/new'
   root 'static_pages#home'
   get '/billing', to: 'static_pages#billing'
-  get '/house_appliance', to: 'static_pages#appliance'
+  get '/house_appliance', to: 'static_pages#house_appliance'
   get '/setting', to: 'static_pages#setting'
   get '/contact', to: 'static_pages#contact'
   get '/signup', to: 'users#new'
