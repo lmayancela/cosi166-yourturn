@@ -1,0 +1,33 @@
+<div class="modal-header">
+  <button type="button" class="close" data-dismiss="modal">x</button>
+  <h4 class="modal-title" id="myModalLabel">Tasks for <%= @date.strftime('%A %b %d') %></h4>
+</div>
+<div class="modal-body">
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Task Name</th>
+        <th scope="col">Task Description</th>
+        <th scope="col">Priority</th>
+        <th scope="col">Users</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @tasks.each do |task| %>
+        <tr>
+          <td> <%= task.name %> </td>
+          <td> <%= task.description %> </td>
+          <td> <%= task.priority %> </td>
+          <td>
+            <% @users[task.id].each do |user| %>
+              <%= user.name %>
+            <% end %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+<div class="modal-footer">
+  <button class="btn btn-primary">Edit Tasks</button>
+</div>
