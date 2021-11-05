@@ -15,7 +15,13 @@ Rails.application.routes.draw do
   get '/contact', to: 'static_pages#contact'
   # routes for sign up and login
   get '/signup', to: 'users#new'
+  get 'sign_up', to: 'registrations#new'
+  post 'sign_up', to: 'registrations#create'
+  get 'display/:date/:ids', to: 'static_pages#display', as: 'display'
+  resources :houses
+  resources :users
   get '/login', to: 'sessions#new'
   post '/login', to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy'
+
 end

@@ -22,12 +22,12 @@ end
   User.create(name: user_name, email: user_email, password: user_password, house_id: house_id)
 end
 
-2.times do
+20.times do
   task_name = Faker::Lorem.sentence
   task_description = Faker::Lorem.paragraph
   priority = Faker::Number.between(from: 1, to: 2)
   house_id = 1
-  due_date = Faker::Date.forward(days: 2)
+  due_date = Faker::Date.forward(days: 14)
   Task.create(name: task_name, description: task_description, priority: priority, house_id: house_id, due_date: due_date)
 end
 

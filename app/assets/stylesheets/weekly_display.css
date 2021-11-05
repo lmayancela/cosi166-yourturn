@@ -1,0 +1,20 @@
+.testimonial-group > .row {
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+}
+.testimonial-group > .row > .col-4 {
+  display: inline-block;
+}
+.col-spaced {
+  margin-left: 15px;
+  margin-right: 15px;
+}
+.date-text {
+  color: rgb(255, 255, 255);
+}
+
+/* Decorations */
+.col-4 { color: #fff; font-size: 48px; padding-bottom: 20px; padding-top: 18px; }
+.col-4:nth-child(2n+1) { background: rgb(119, 119, 119); }
+.col-4:nth-child(2n+2) { background: rgb(51, 51, 51); }
