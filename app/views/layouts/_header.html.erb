@@ -1,6 +1,6 @@
 <header class="navbar navbar-fixed-top navbar-inverse">
   <div class="container">
-    <%= link_to "sample app", root_path, id: "logo" %>
+    <%= link_to "YourTurn", root_path, id: "logo" %>
     <nav>
       <div class="navbar-header">
         <button type="button" class="navbar-toggle collapsed"
@@ -32,6 +32,9 @@
                 <%= link_to "Log out", logout_path, method: :delete %>
               </li>
             </ul>
+          </li>
+          <li>
+            <%= link_to "Log out", logout_path, method: :delete %>
           </li>
         <% else %>
           <li><%= link_to "Log in", login_path %></li>
