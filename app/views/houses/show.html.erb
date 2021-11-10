@@ -1,0 +1,29 @@
+<% provide(:title, @house.name) %>
+<div class="row">
+  <aside class="col-md-4">
+    <section class="user_info">
+       <h1>
+         <%= @house.name %>
+         <%= @house.user_id%>
+      </h1>
+    </section>
+  </aside>
+</div>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">Name</th>
+      <th scope="col">ID</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @house.users.each do |user| %>
+      <tr scope="row">
+        <td><%= user.name %></td>
+        <td><%= user.id %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

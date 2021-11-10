@@ -1,0 +1,24 @@
+<div class="modal-body">
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Bill Description</th>
+        <th scope="col">Paid by</th>
+        <th scope="col">Amount</th>
+        <th scope="col">Due Date</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @bills.each_pair do |user,bills| %>
+        <% bills.each do |bill| %>
+          <tr>
+            <td> <%= bill.name %> </td>
+            <td> <%= user.id %> </td>
+            <td> <%= bill.amount %> </td>
+            <td> <%= bill.due_date %> </td>
+          </tr>
+        <% end %>
+      <% end %>
+    </tbody>
+  </table>
+</div>

@@ -10,6 +10,31 @@ class StaticPagesController < ApplicationController
   end
 
   def billing
+
+    @balance = 0.0
+    current_user.house.users.each do |user|
+      if user != current_user
+        user.bills.each do |bill|
+          @balance += bill.amount.to_f
+        end
+      end
+    end
+    @balance /= current_user.house.users.length
+    @balance = @balance.floor(2)
+  end
+
+  def billing_detail
+
+    @bills = {}
+    current_user.house.users.each do |user|
+      if user != current_user
+        @bills[user] = []
+        user.bills.each do |bill|
+          @bills[user] << bill
+        end
+      end
+    end
+    @bills
   end
 
   def setting
