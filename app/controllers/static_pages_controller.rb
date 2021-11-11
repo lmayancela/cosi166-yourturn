@@ -12,11 +12,22 @@ class StaticPagesController < ApplicationController
   def billing
 
     @balance = 0.0
+    @usersplits = {}
     current_user.house.users.each do |user|
+      split = 0.0
       if user != current_user
+        
         user.bills.each do |bill|
           @balance += bill.amount.to_f
+          split += bill.amount.to_f
         end
+      else
+        user.bills.each do |bill|
+          split += bill.amount.to_f
+        end
+      end
+      if user.bills.length >= 1
+        @usersplits[user.name]=split
       end
     end
     @balance /= current_user.house.users.length

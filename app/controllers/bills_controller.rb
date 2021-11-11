@@ -1,3 +1,5 @@
+require 'byebug'
+
 class BillsController < ApplicationController
 
   def new
@@ -17,6 +19,7 @@ class BillsController < ApplicationController
   private
 
   def bill_params
+
     params.require(:bill).permit(:name, :amount, :due_date)
   end
 end
