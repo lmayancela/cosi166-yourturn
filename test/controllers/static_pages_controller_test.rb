@@ -1,23 +1,20 @@
-require "test_helper"
+# frozen_string_literal: true
+
+require 'test_helper'
 
 class StaticPagesControllerTest < ActionDispatch::IntegrationTest
-  test "should get home" do
-    get static_pages_home_url
+  test 'should get home' do
+    get root_path
     assert_response :success
   end
 
-  test "should get appliance" do
-    get static_pages_appliance_url
+  test 'should get appliance' do
+    get house_appliance_path
     assert_response :success
   end
 
-  test "should get bill" do
-    get static_pages_bill_url
-    assert_response :success
-  end
-
-  test "should get setting" do
-    get static_pages_setting_url
-    assert_response :success
-  end
+  # test "should get bill" do
+  #   get billing_path
+  #   assert_response :success
+  # end
 end

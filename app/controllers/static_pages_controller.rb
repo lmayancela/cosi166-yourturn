@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'json'
 
 class StaticPagesController < ApplicationController
@@ -6,17 +8,15 @@ class StaticPagesController < ApplicationController
     @date = Date.today
   end
 
-  def house_appliance
-  end
+  def house_appliance; end
 
   def billing
-
     @balance = 0.0
     @usersplits = {}
     current_user.house.users.each do |user|
       split = 0.0
       if user != current_user
-        
+
         user.bills.each do |bill|
           @balance += bill.amount.to_f
           split += bill.amount.to_f
@@ -26,39 +26,34 @@ class StaticPagesController < ApplicationController
           split += bill.amount.to_f
         end
       end
-      if user.bills.length >= 1
-        @usersplits[user.name]=split
-      end
+      @usersplits[user.name] = split if user.bills.length >= 1
     end
     @balance /= current_user.house.users.length
     @balance = @balance.floor(2)
   end
 
   def billing_detail
-
     @bills = {}
     current_user.house.users.each do |user|
-      if user != current_user
-        @bills[user] = []
-        user.bills.each do |bill|
-          @bills[user] << bill
-        end
+      next unless user != current_user
+
+      @bills[user] = []
+      user.bills.each do |bill|
+        @bills[user] << bill
       end
     end
     @bills
   end
 
-  def setting
-  end
+  def setting; end
 
-  def contact
-  end
+  def contact; end
 
   def display
     @tasks = get_tasks(params[:ids])
     @date = Date.parse(params[:date])
     @users = get_task_users(@tasks)
-    
+
     respond_to do |format|
       format.html
       format.js
@@ -68,8 +63,8 @@ class StaticPagesController < ApplicationController
   private
 
   def get_task_users(tasks)
-    users_per_task = Hash.new
-    puts "----------------------------------------------"
+    users_per_task = {}
+    puts '----------------------------------------------'
 
     tasks.each do |task|
       puts task
@@ -80,14 +75,12 @@ class StaticPagesController < ApplicationController
 
     puts JSON.pretty_generate(users_per_task)
 
-    return users_per_task
+    users_per_task
   end
 
   def get_tasks(ids)
     ids_arr = ids.split('-')
-    tasks = Task.find(ids_arr)
-
-    return tasks
+    Task.find(ids_arr)
   end
 
   def extract_valid_dates
@@ -106,12 +99,9 @@ class StaticPagesController < ApplicationController
     Task.find_each do |task|
       task_date = Date.parse(task.due_date.to_s)
       days_apart = (task_date - curr_date).to_i
-      if days_apart.between?(0,7)
-        tasks_per_day[days_apart] << task.id
-      end
+      tasks_per_day[days_apart] << task.id if days_apart.between?(0, 7)
     end
 
-    return tasks_per_day
+    tasks_per_day
   end
-
 end

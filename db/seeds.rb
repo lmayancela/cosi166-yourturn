@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
 #
@@ -6,7 +8,6 @@ BillRecord.delete_all
 TaskRecord.delete_all
 User.delete_all
 House.delete_all
-
 
 3.times do
   admin_id = Faker::Number.between(from: 1, to: 10)
@@ -28,7 +29,8 @@ end
   priority = Faker::Number.between(from: 1, to: 2)
   house_id = 1
   due_date = Faker::Date.forward(days: 14)
-  Task.create(name: task_name, description: task_description, priority: priority, house_id: house_id, due_date: due_date)
+  Task.create(name: task_name, description: task_description, priority: priority, house_id: house_id,
+              due_date: due_date)
 end
 
 TaskRecord.create(task_id: 1, user_id: 1)

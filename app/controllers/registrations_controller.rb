@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class RegistrationsController < ApplicationController
   def new
     @user = User.new
@@ -5,7 +7,6 @@ class RegistrationsController < ApplicationController
 
   def create
     @user = User.new(user_params)
-
   end
 
   private
