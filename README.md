@@ -4,6 +4,9 @@ The purpose of this app is to help groups of housemates manage various house tas
 These tasks include things such as rent splitting, checking availability of house appliances (dishwasher, laundry, etc.), and keeping track of important house information (passwords) to name a few.
 For rent splitting, users will be able to make and request payments through PayPal directly on the app. It can also displays the current user's share of the total expenses of other users in the same house, user can view the exact transaction details, they can also visualize how much each user has spent through a pie chart
 
+* Live Heroku Link
+https://obscure-tor-72595.herokuapp.com/
+
 * Routes Description
 Home page: /
 Users urls: /users, /users/new, /users/create, /users/delete, /users/1, /users/1/edit
