@@ -9,7 +9,6 @@ Rails.application.routes.draw do
   resources :tasks
   resources :users
   resources :houses
-  get 'users/new'
   root 'static_pages#home'
   get '/billing', to: 'static_pages#billing'
   get '/house_appliance', to: 'static_pages#house_appliance'
@@ -19,11 +18,10 @@ Rails.application.routes.draw do
   get '/signup', to: 'users#new'
   get 'sign_up', to: 'registrations#new'
   post 'sign_up', to: 'registrations#create'
-  get 'billing_detail', to: 'static_pages#billing_detail'
-  get 'display/:date/:ids', to: 'static_pages#display', as: 'display'
-  resources :houses
-  resources :users
   get '/login', to: 'sessions#new'
   post '/login', to: 'sessions#create'
-  delete '/logout', to: 'sessions#destroy'
+  get '/logout', to: 'sessions#destroy'
+
+  get 'billing_detail', to: 'static_pages#billing_detail'
+  get 'display/:date/:ids', to: 'static_pages#display', as: 'display'
 end

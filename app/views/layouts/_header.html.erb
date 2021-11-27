@@ -17,7 +17,7 @@
           id="bs-example-navbar-collapse-1">
         <li><%= link_to "Home",   root_path %></li>
         <li><%= link_to "Bill",   billing_path %></li>
-        <li><%= link_to "Appliance", house_appliance_path %></li>
+        <li><%= link_to "Appliance", appliances_path %></li>
         <% if logged_in? %>
           <li><%= link_to "Users", '#' %></li>
           <li class="dropdown">
@@ -28,7 +28,7 @@
               <li><%= link_to "Profile", current_user %></li>
               <li class="divider"></li>
               <li>
-                <%= link_to "Log out", logout_path, method: :delete %>
+                <%= link_to "Log out", logout_path, method: :get %>
               </li>
             </ul>
           </li>

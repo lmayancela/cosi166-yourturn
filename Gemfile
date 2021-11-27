@@ -63,7 +63,6 @@ gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 gem 'awesome_print'
 gem 'bcrypt', '3.1.13'
 gem 'better_errors'
-gem 'bootstrap'
 gem 'chartkick'
 gem 'faker'
 gem 'hirb'
@@ -71,3 +70,5 @@ gem 'popper_js'
 gem 'pry-byebug'
 gem 'responders'
 gem 'rexml'
+
+gem "stimulus_reflex", "~> 3.4"

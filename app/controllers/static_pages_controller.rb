@@ -8,8 +8,6 @@ class StaticPagesController < ApplicationController
     @date = Date.today
   end
 
-  def house_appliance; end
-
   def billing
     @balance = 0.0
     @usersplits = {}
