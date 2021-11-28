@@ -1,18 +1,22 @@
 <h1>APPLIANCE</h1>
-<% @appliances.each do |appliance| %>
-  <div class="card">
-    <img src="<%= appliance.image_url %>" class="card-img-top" alt="...">
-
-    <div class="card-body">
-      <h5 class="card-title"><%= appliance.name %></h5>
-      <% if appliance.used == false %>
-            <%= button_to "Use", appliance_path(appliance.id), :class => "btn btn-primary", :method => :patch %>
-          <% elsif current_user.id == appliance.user_id %>
-            <%= button_to "Unlock", appliance_path(appliance.id), :class => "btn btn-primary", :method => :patch %>
-          <% else %>
-            <button type="button" class="btn btn-primary" disabled><%= User.find_by(id: appliance.user_id).name %> is using</button>
-          <% end %>
-      <%# <a href="#" class="btn btn-primary">Go somewhere</a> %>
-    </div>
+<div class="container">
+  <div class="row">
+    <% @appliances.each do |appliance| %>
+      <div class="col-sm-4">
+        <div class="card" style="width: 40rem;">
+          <img src="<%= appliance.image_url %>" class="card-img-top img-responsive" alt="...">
+          <div class="card-body">
+            <h5 class="card-title"><%= appliance.name %></h5>
+            <% if appliance.used == false %>
+              <%= button_to "Use", appliance_path(appliance.id), :class => "btn btn-primary", :method => :patch %>
+            <% elsif current_user.id == appliance.user_id %>
+              <%= button_to "Unlock", appliance_path(appliance.id), :class => "btn btn-primary", :method => :patch %>
+            <% else %>
+              <button type="button" class="btn btn-primary" disabled><%= User.find_by(id: appliance.user_id).name %> is using</button>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    <% end %> 
   </div>
-<% end %>
+</div>

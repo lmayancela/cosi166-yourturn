@@ -7,6 +7,7 @@
 //= require popper
 //= require turbolinks
 //= require bootstrap
+//= require bootstrap-sprockets
 //= require_tree.
 
 import Rails from "@rails/ujs"
@@ -16,6 +17,7 @@ import "channels"
 import 'css/site.scss'
 import "jquery"
 import "bootstrap"
+import "../stylesheets/application"
 import "chartkick/chart.js"
 
 Rails.start()
@@ -23,4 +25,4 @@ Turbolinks.start()
 ActiveStorage.start()
 
 
-import "controllers"
+
