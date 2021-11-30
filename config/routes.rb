@@ -24,4 +24,6 @@ Rails.application.routes.draw do
 
   get 'billing_detail', to: 'static_pages#billing_detail'
   get 'display/:date/:ids', to: 'static_pages#display', as: 'display'
+
+  resources :posts, only: [:index, :create]
 end

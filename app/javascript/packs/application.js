@@ -19,6 +19,9 @@ import "jquery"
 import "bootstrap"
 import "../stylesheets/application"
 import "chartkick/chart.js"
+import 'bootstrap/dist/js/bootstrap'
+import 'bootstrap/dist/css/bootstrap'
+require("stylesheets/application.scss")
 
 Rails.start()
 Turbolinks.start()
@@ -26,3 +29,5 @@ ActiveStorage.start()
 
 
 
+
+import "controllers"

@@ -72,3 +72,6 @@ gem 'responders'
 gem 'rexml'
 
 gem "stimulus_reflex", "~> 3.4"
+
+gem "redis", "~> 4.5"
+gem "binding_of_caller"
