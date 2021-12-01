@@ -10,15 +10,24 @@ import "channels"
 import 'css/site.scss'
 import "jquery"
 import "bootstrap"
+import "../stylesheets/application"
 import "chartkick/chart.js"
+import 'bootstrap/dist/js/bootstrap'
+import 'bootstrap/dist/css/bootstrap'
+require("stylesheets/application.scss")
 
 //= require jquery
 //= require popper
 //= require turbolinks
 //= require bootstrap
+//= require bootstrap-sprockets
 //= require_tree.
 
 Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
 
+
+
+
+import "controllers"

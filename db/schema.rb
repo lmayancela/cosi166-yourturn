@@ -10,6 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 2021_10_24_151037) do
 
   # These are extensions that must be enabled in order to support this database
@@ -36,6 +37,35 @@ ActiveRecord::Schema.define(version: 2021_10_24_151037) do
     t.string "name"
     t.text "amount"
     t.date "due_date"
+=======
+ActiveRecord::Schema.define(version: 2021_11_30_180806) do
+
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
+  create_table "appliances", force: :cascade do |t|
+    t.string "name"
+    t.integer "house_id"
+    t.integer "user_id"
+    t.string "image_url"
+    t.boolean "used"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "bill_records", force: :cascade do |t|
+    t.bigint "bill_id", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["bill_id"], name: "index_bill_records_on_bill_id"
+    t.index ["user_id"], name: "index_bill_records_on_user_id"
+  end
+
+  create_table "bills", force: :cascade do |t|
+    t.string "name"
+    t.text "amount"
+    t.date "due_date"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -43,6 +73,22 @@ ActiveRecord::Schema.define(version: 2021_10_24_151037) do
   create_table "houses", force: :cascade do |t|
     t.string "name"
     t.integer "user_id"
+>>>>>>> 99b09d2fdd0534e6652735f80c74b7477b2d2378
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+<<<<<<< HEAD
+  create_table "houses", force: :cascade do |t|
+    t.string "name"
+    t.integer "user_id"
+=======
+  create_table "posts", force: :cascade do |t|
+    t.string "username", default: "wentao", null: false
+    t.string "body", null: false
+    t.integer "likes_count", default: 0, null: false
+    t.integer "reposts_count", default: 0, null: false
+>>>>>>> 99b09d2fdd0534e6652735f80c74b7477b2d2378
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

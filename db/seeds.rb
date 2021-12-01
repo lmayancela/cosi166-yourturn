@@ -8,6 +8,7 @@ BillRecord.delete_all
 TaskRecord.delete_all
 User.delete_all
 House.delete_all
+Appliance.delete_all
 
 3.times do
   admin_id = Faker::Number.between(from: 1, to: 10)
@@ -32,6 +33,10 @@ end
   Task.create(name: task_name, description: task_description, priority: priority, house_id: house_id,
               due_date: due_date)
 end
+
+Appliance.create(name: 'Washing Machine', house_id: 1, user_id: -1, image_url: 'https://i.pinimg.com/originals/25/90/37/259037de078c698b1322486404632e01.png', used: false)
+Appliance.create(name: 'Dryer', house_id: 1, user_id: -1, image_url: 'https://www.pngitem.com/pimgs/m/597-5971019_dryer-clipart-cartoon-clothes-dryer-clipart-hd-png.png', used: false)
+Appliance.create(name: 'Dishwasher', house_id: 1, user_id: -1, image_url: 'https://i.pinimg.com/originals/67/1f/a7/671fa725fec42df56325a9bf946b44de.png', used: false)
 
 TaskRecord.create(task_id: 1, user_id: 1)
 TaskRecord.create(task_id: 2, user_id: 1)

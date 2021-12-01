@@ -14,7 +14,14 @@ class User < ApplicationRecord
                     # format: { with: VALID_EMAIL_REGEX },
                     uniqueness: true
   has_secure_password
-  validates :password, presence: true, length: { minimum: 6 }
+  validates :password, :presence => true,
+  :confirmation => true,
+  :length => {:within => 6..40},
+  :on => :create
+  validates :password, :confirmation => true,
+  :length => {:within => 6..40},
+  :allow_blank => true,
+  :on => :update
 
   # Returns the hash digest of the given string.
   def self.digest(string)

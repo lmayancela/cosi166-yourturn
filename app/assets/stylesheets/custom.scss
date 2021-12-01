@@ -13,9 +13,6 @@ $gray-medium-light: #eaeaea;
 
 /* universal */
 
-body {
-  padding-top: 60px;
-}
 
 section {
   overflow: auto;
@@ -66,15 +63,12 @@ p {
   float: left;
   margin-right: 10px;
   font-size: 1.7em;
-  color: white;
+  color: black;
   text-transform: uppercase;
   letter-spacing: -1px;
-  padding-top: 9px;
+  padding-top: 5px;
   font-weight: bold;
-  &:hover {
-    color: white;
-    text-decoration: none;
-  }
+
 }
 
 /* footer */
@@ -178,20 +172,3 @@ input {
   }
 }
 
-@media (max-width: 800px) {
-  footer {
-    small {
-      display: block;
-      float: none;
-      margin-bottom: 1em;
-    }
-    ul {
-      float: none;
-      padding: 0;
-      li {
-        float: none;
-        margin-left: 0;
-      }
-    }
-  }
-}

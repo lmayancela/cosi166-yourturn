@@ -6,7 +6,8 @@ class CreateAppliances < ActiveRecord::Migration[6.1]
       t.string :name
       t.integer :house_id
       t.integer :user_id
-
+      t.string  :image_url
+      t.boolean  :used
       t.timestamps
     end
   end
