@@ -96,6 +96,7 @@ class StaticPagesController < ApplicationController
     }
 
     curr_date = Date.today
+    # tasks = current_user.tasks
     Task.find_each do |task|
       task_date = Date.parse(task.due_date.to_s)
       days_apart = (task_date - curr_date).to_i

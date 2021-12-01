@@ -19,7 +19,7 @@
           <td> <%= task.description %> </td>
           <td> <%= task.priority %> </td>
           <td>
-            <% @users[task.id].each do |user| %>
+            <% task.users.each do |user| %>
               <%= user.name %>
             <% end %>
           </td>

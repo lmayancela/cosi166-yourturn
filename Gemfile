@@ -71,3 +71,4 @@ gem 'popper_js'
 gem 'pry-byebug'
 gem 'responders'
 gem 'rexml'
+gem "activerecord-import" # Much faster bulk importing

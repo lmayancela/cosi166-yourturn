@@ -2,6 +2,7 @@
   "name": "yourturn",
   "private": true,
   "dependencies": {
+    "@popperjs/core": "^2.11.0",
     "@rails/actioncable": "^6.0.0",
     "@rails/activestorage": "^6.0.0",
     "@rails/ujs": "^6.0.0",
@@ -9,7 +10,8 @@
     "bootstrap": "3.4.1",
     "chart.js": "^3.6.0",
     "chartkick": "^4.1.1",
-    "jquery": "3.5.1",
+    "jquery": "^3.6.0",
+    "popper.js": "^1.16.1",
     "turbolinks": "^5.2.0",
     "webpack": "^4.46.0",
     "webpack-cli": "^3.3.12"

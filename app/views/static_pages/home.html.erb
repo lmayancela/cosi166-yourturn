@@ -10,11 +10,15 @@
       <% if @tasks_test[0].length > 0 %>
         <%= link_to "Click here to view tasks", display_path(date: @date.to_s, ids: @tasks_test[0].join("-")), class: 'btn btn-primary btn-lg' %>
       <% end %>
+
       <%# <div id="modal-window" class="modal hide fade" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
-          <div class="modal-content"></div>
+          <div class="modal-content">
+
+          </div>
         </div>
       </div> %>
+
     </div>
   </div>
 
@@ -43,7 +47,9 @@
   <div class="center">
     <%= link_to "Create a new task", new_task_path, class: 'btn btn-primary btn-lg' %>
   </div>
+
 <% else %>
+
   <div class="center main-jumbo">
     <div class="jumbotron">
       <h1>Welcome To YourTurn!</h1>
@@ -52,4 +58,5 @@
       <%= link_to "Sign Up", signup_path , class: 'btn btn-primary btn-lg' %>      
     </div>
   </div>
+  
 <% end %>
