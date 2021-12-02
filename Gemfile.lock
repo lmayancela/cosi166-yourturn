@@ -107,6 +107,7 @@ GEM
     globalid (0.5.2)
       activesupport (>= 5.0)
     hirb (0.7.3)
+    hiredis (0.6.3)
     i18n (1.8.10)
       concurrent-ruby (~> 1.0)
     jbuilder (2.11.2)
@@ -183,6 +184,9 @@ GEM
     rb-inotify (0.10.1)
       ffi (~> 1.0)
     redis (4.5.1)
+    redis-session-store (0.11.3)
+      actionpack (>= 3, < 7)
+      redis (>= 3, < 5)
     regexp_parser (2.1.1)
     responders (3.0.1)
       actionpack (>= 5.0)
@@ -264,6 +268,7 @@ DEPENDENCIES
   chartkick
   faker
   hirb
+  hiredis
   jbuilder (~> 2.7)
   listen (~> 3.3)
   pg (~> 1.1)
@@ -273,7 +278,8 @@ DEPENDENCIES
   rack-mini-profiler (~> 2.0)
   rails (~> 6.1.4, >= 6.1.4.1)
   rails-controller-testing
-  redis (~> 4.5)
+  redis (>= 4.0)
+  redis-session-store
   responders
   rexml
   sass-rails (>= 6)

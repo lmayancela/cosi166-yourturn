@@ -71,8 +71,8 @@ gem 'pry-byebug'
 gem 'responders'
 gem 'rexml'
 gem "activerecord-import" # Much faster bulk importing
-
 gem "stimulus_reflex", "~> 3.4"
-
-gem "redis", "~> 4.5"
+gem "redis", ">= 4.0", :require => ["redis", "redis/connection/hiredis"]
+gem "hiredis"
 gem "binding_of_caller"
+gem 'redis-session-store'
