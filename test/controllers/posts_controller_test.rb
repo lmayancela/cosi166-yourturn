@@ -7,8 +7,6 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
     @post = posts(:one)
   end
 
-<<<<<<< HEAD
-=======
   test 'should get index' do
     get posts_url
     assert_response :success
@@ -50,5 +48,4 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
 
     assert_redirected_to posts_url
   end
->>>>>>> 4947aa7d6c8566510a1091b13e173d317d6409bc
 end
