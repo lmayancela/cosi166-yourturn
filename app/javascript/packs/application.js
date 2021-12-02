@@ -17,6 +17,7 @@ import 'bootstrap/dist/css/bootstrap'
 require("stylesheets/application.scss")
 
 //= require jquery
+//= require jquery-ui
 //= require popper
 //= require turbolinks
 //= require bootstrap
