@@ -60,19 +60,19 @@ end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 
+gem 'activerecord-import' # Much faster bulk importing
 gem 'awesome_print'
 gem 'bcrypt', '3.1.13'
 gem 'better_errors'
+gem 'binding_of_caller'
 gem 'chartkick'
 gem 'faker'
 gem 'hirb'
+gem 'hiredis'
 gem 'popper_js'
 gem 'pry-byebug'
+gem 'redis', '>= 4.0', require: ['redis', 'redis/connection/hiredis']
+gem 'redis-session-store'
 gem 'responders'
 gem 'rexml'
-gem "activerecord-import" # Much faster bulk importing
-
-gem "stimulus_reflex", "~> 3.4"
-
-gem "redis", "~> 4.5"
-gem "binding_of_caller"
+gem 'stimulus_reflex', '~> 3.4'

@@ -28,7 +28,7 @@ class UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
     if @user.update(params.require(:user).permit(:house_id))
-      flash[:success] = 'Welcome to ' + @user.house.name+'!'
+      flash[:success] = "Welcome to #{@user.house.name}!"
       redirect_to @user
     else
       render 'edit'

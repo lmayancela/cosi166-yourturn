@@ -1,13 +1,16 @@
 <% provide(:title, @user.name) %>
 
 <% if @user.house_id == 1%>
-
-  <div>
-  <%= link_to 'Create Your House!', new_house_path %> 
+  <br>
+  <br>
+  <div class="text-center">
+    <%= link_to 'Create Your House!', new_house_path, :class => "btn btn-outline-primary"%> 
   </div>
-  <div>
-  <%= link_to 'Join a House!', edit_user_path %>
+  <div class="text-center">
+    <%= link_to 'Join a House!', edit_user_path, :class => "btn btn-outline-primary" %>
   </div>
+  <br>
+  <br>
 <% else %>
   <div class="row">
     <aside class="col-md-4">

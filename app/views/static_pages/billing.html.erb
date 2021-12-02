@@ -4,14 +4,17 @@
 
   <div class="jumbotron">
 
-      <h3> Your current balance is <strong> <%= @balance %> $</strong></h3>
-      <%= link_to "Click here to view balance details", billing_detail_path, class: 'btn btn-primary btn-lg' %>
-      <%= link_to "Pay my bill", "#", class: 'btn btn-primary btn-lg' %>
-
+      <h2> Your current balance is $ <strong> <%= @balance %> </strong></h2>
+      <div class="text-center">
+        <%= link_to "Click here to view balance details", billing_detail_path, class: 'btn btn-outline-primary' %>
+      </div>
+      <div class="text-center">
+        <%= link_to "Pay my bill", "#", class: 'btn btn-outline-primary' %>
+      </div>
   </div>
 
   <div class="center">
-    <%= link_to "Uplaod a new bill", new_bill_path, class: 'btn btn-primary btn-lg' %>
+    <%= link_to "Uplaod a new bill", new_bill_path, class: 'btn btn-outline-primary' %>
   </div>
 
   <h1> Balance History </h1>

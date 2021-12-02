@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class PostsController < ApplicationController
   include CableReady::Broadcaster
 
@@ -8,10 +10,10 @@ class PostsController < ApplicationController
 
   def create
     post = Post.create(post_params)
-    cable_ready["timeline"].insert_adjacent_html(
-      selector: "#timeline",
-      position: "afterbegin",
-      html: render_to_string(partial: "post", locals: {post: post})
+    cable_ready['timeline'].insert_adjacent_html(
+      selector: '#timeline',
+      position: 'afterbegin',
+      html: render_to_string(partial: 'post', locals: { post: post })
     )
     cable_ready.broadcast
     redirect_to posts_path
