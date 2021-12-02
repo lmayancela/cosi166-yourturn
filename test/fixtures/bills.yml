@@ -1,1 +1,3 @@
-
+one:
+  name: string
+  amount: 10

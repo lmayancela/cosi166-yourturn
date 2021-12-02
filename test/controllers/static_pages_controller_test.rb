@@ -9,7 +9,7 @@ class StaticPagesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test 'should get appliance' do
-    get house_appliance_path
+    get appliances_path
     assert_response :success
   end
 

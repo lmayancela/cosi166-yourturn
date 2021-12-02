@@ -29,4 +29,9 @@ class UserTest < ActiveSupport::TestCase
     @user.email = "#{'a' * 244}@example.com"
     assert_not @user.valid?
   end
+
+  test 'has a hosue' do
+    assert_not_nil(@user.house)
+  end
+
 end
