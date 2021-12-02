@@ -10,11 +10,10 @@ User.delete_all
 House.delete_all
 Appliance.delete_all
 
-3.times do
-  admin_id = Faker::Number.between(from: 1, to: 10)
-  house_name = Faker::Space.planet
-  House.create(name: house_name, user_id: admin_id)
-end
+# create the first house for default
+admin_id = Faker::Number.between(from: 1, to: 10)
+house_name = Faker::Space.planet
+House.create(name: house_name, user_id: admin_id)
 
 10.times do
   user_name = Faker::Name.name
@@ -34,9 +33,9 @@ end
               due_date: due_date)
 end
 
-Appliance.create(name: 'Washing Machine', house_id: 2, user_id: -1, image_url: 's3://yourturn/washing_machine.jpeg', used: false)
-Appliance.create(name: 'Dryer', house_id: 2, user_id: -1, image_url: 's3://yourturn/dryer.png', used: false)
-Appliance.create(name: 'Dishwasher', house_id: 2, user_id: -1, image_url: 's3://yourturn/dishwasher.png', used: false)
+Appliance.create(name: 'Washing Machine', house_id: 1, user_id: -1, used: false)
+Appliance.create(name: 'Dryer', house_id: 1, user_id: -1, used: false)
+Appliance.create(name: 'Dishwasher', house_id: 1, user_id: -1, used: false)
 
 TaskRecord.create(task_id: 1, user_id: 1)
 TaskRecord.create(task_id: 2, user_id: 1)

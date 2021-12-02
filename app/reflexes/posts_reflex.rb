@@ -31,5 +31,4 @@ class PostsReflex < ApplicationReflex
   #   end
   #
   # Learn more at: https://docs.stimulusreflex.com/reflexes#reflex-classes
-
 end

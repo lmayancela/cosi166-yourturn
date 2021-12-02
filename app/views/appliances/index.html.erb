@@ -1,10 +1,11 @@
 <h1>APPLIANCE</h1>
+<br>
 <div class="container">
-  <div class="row">
+  <div class="row text-center">
     <% @appliances.each do |appliance| %>
       <div class="col-sm-4">
-        <div class="card" style="width: 40rem;">
-          <img src="<%= appliance.image_url %>" class="card-img-top img-responsive" alt="...">
+        <div class="card" style="width: 25rem;">
+          <%= image_tag ("/assets/" + appliance.name.gsub(/[[:space:]]/, '').downcase + ".png"), height: '350', width: '350'%>
           <div class="card-body">
             <h5 class="card-title"><%= appliance.name %></h5>
             <% if appliance.used == false %>

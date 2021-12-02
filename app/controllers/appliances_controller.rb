@@ -2,7 +2,8 @@
 
 class AppliancesController < ApplicationController
   def index
-    @appliances = Appliance.all
+    @current_house = House.find_by(id: current_user.house_id)
+    @appliances = @current_house.appliances.order(name: :desc)
   end
 
   def update
@@ -21,8 +22,8 @@ class AppliancesController < ApplicationController
 
   private
 
-    # Only allow a list of trusted parameters through.
-    def appliance_params
-      params.require(:appliance).permit(:name, :house_id, :user_id, :used)
-    end
+  # Only allow a list of trusted parameters through.
+  def appliance_params
+    params.require(:appliance).permit(:name, :house_id, :user_id, :used)
+  end
 end

@@ -8,6 +8,9 @@ For rent splitting, users will be able to make and request payments through PayP
 * Live Heroku Link
 https://obscure-tor-72595.herokuapp.com/
 
+* GitHub Link
+https://github.com/lmayancela/cosi166-yourturn
+
 * Routes Description
 Home page: /
 Users urls: /users, /users/new, /users/create, /users/delete, /users/1, /users/1/edit
@@ -44,8 +47,12 @@ User <-> Bill (Many to Many)
 User <-> Task (Many to Many)
 
 * Enable UI or Bootstrap components
-Bootstrap: yarn add jquery@3.5.1 bootstrap@3.4.1
-Chartkick: yarn add chartkick chart.js  
+Bootstrap: 
+yarn add bootstrap@next
+yarn add @popperjs/core
+
+Chartkick: 
+yarn add chartkick chart.js  
 
 * Database Name
 labapp_development

@@ -6,7 +6,7 @@ class HousesController < ApplicationController
   end
 
   def create
-    @house = House.new(house_params.merge({ user_id: current_user.id}))
+    @house = House.new(house_params.merge({ user_id: current_user.id }))
     if @house.save
       current_user.update(house_id: @house.id)
       flash[:success] = 'Welcome to Your New Home!'
@@ -14,13 +14,16 @@ class HousesController < ApplicationController
     else
       render 'new'
     end
-  end
 
+    # create appliances for new house
+    Appliance.create(name: 'Washing Machine', house_id: @house.id, user_id: -1, used: false)
+    Appliance.create(name: 'Dryer', house_id: @house.id, user_id: -1, used: false)
+    Appliance.create(name: 'Dishwasher', house_id: @house.id, user_id: -1, used: false)
+  end
 
   private
 
   def house_params
     params.require(:house).permit(:name)
   end
-
 end

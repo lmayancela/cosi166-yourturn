@@ -4,13 +4,13 @@ require 'active_support/core_ext/integer/time'
 
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
-  config.cache_store = :redis_cache_store, {driver: :hiredis, url: ENV.fetch("REDIS_URL")}
-   config.session_store :cache_store,
-     key: "_session",
-     compress: true,
-     pool_size: 5,
-     expire_after: 1.year
-     
+  config.cache_store = :redis_cache_store, { driver: :hiredis, url: ENV.fetch('REDIS_URL') }
+  config.session_store :cache_store,
+                       key: '_session',
+                       compress: true,
+                       pool_size: 5,
+                       expire_after: 1.year
+
   # Code is not reloaded between requests.
   config.cache_classes = true
 
