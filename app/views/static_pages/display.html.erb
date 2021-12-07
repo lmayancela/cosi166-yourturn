@@ -1,33 +1,33 @@
-<div class="modal-header">
-  <button type="button" class="close" data-dismiss="modal">x</button>
-  <h4 class="modal-title" id="myModalLabel">Tasks for <%= @date.strftime('%A %b %d') %></h4>
+<div class="jumbotron center">
+  <h1>Tasks for <%= @date.strftime('%A %b %d') %></h1>
+  <p> There are <strong> <%= @tasks.length %> </strong> tasks due on this day </p>
 </div>
-<div class="modal-body">
-  <table class="table">
-    <thead>
-      <tr>
-        <th scope="col">Task Name</th>
-        <th scope="col">Task Description</th>
-        <th scope="col">Priority</th>
-        <th scope="col">Users</th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @tasks.each do |task| %>
-        <tr>
-          <td> <%= task.name %> </td>
-          <td> <%= task.description %> </td>
-          <td> <%= task.priority %> </td>
-          <td>
-            <% task.users.each do |user| %>
-              <%= user.name %>
-            <% end %>
-          </td>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
+
+<br>
+
+<div class = "row">
+  <% @tasks.each do |task| %>
+    <div class="card col-sm-6 border <%= 'border-primary' if task.priority == 1 %> <%= 'border-warning' if task.priority == 2 %> <%= 'border-danger' if task.priority == 3 %>" style="width: 36rem;"> 
+      <div class="card-header">
+        <%= task.name %>
+      </div>
+      <div class="card-body">
+        <h5 class="card-title"> Description: </h5>
+        <p class="card-text"> <%= task.description %> </p>
+        <br>
+        <h5 class="card-title"> Users: </h5>
+      </div>
+      <ul class="list-group list-group-flush">
+        <% @users[task.id].each do |user| %>
+          <li class="list-group-item"><%= user.name %></li>
+        <% end %>
+      </ul>
+      <div class="card-body center">
+        <%= link_to "Edit Task", edit_task_path(id: task.id), class: 'btn btn-primary btn-lg' %>
+      </div>
+    </div>
+  <% end %>
 </div>
-<div class="modal-footer">
-  <button class="btn btn-primary">Edit Tasks</button>
-</div>
+
+
+

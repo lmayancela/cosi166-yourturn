@@ -1,0 +1,25 @@
+<br>
+<h1> Edit Task: <%= @task.name %> </h1>
+<br>
+
+<%= form_for @task do |f| %>
+
+    <%= f.label :name %>
+    <%= f.text_field :name, class: 'form_control' %>
+
+    <%= f.label :description %>
+    <%= f.text_field :description, class: 'form-control' %>
+
+    <%= f.label :priority %>
+    <%= f.number_field :priority, in: 1.0..3.0, class: 'form-control' %>
+
+    <%= f.label :due_date %>
+    <%= f.date_select :due_date %>
+
+    <%= f.label :users %>
+    <p> Hold the shift key to select multiple users </p>
+    <%= f.select(:users, @users.collect {|u| [ u.name, u.id ] }, {}, { :multiple => true, :size => 5 }) %>
+
+    <%= f.submit "Update Task", class: "btn btn-primary" %>
+
+<% end %>
