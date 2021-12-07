@@ -16,12 +16,23 @@ class BillsController < ApplicationController
       bill_records = create_records(@bill.id, params['users'] - [''])
       BillRecord.import(bill_records)
       flash[:success] = "Your bill for #{@bill.name}is uploaded!"
-      redirect_to current_user
+      redirect_to billing_detail_path
     else
       render 'new'
     end
   end
 
+  def destroy
+    bill = Bill.find(params["id"])
+    bill.bill_record.each do |record|
+      record.destroy
+    end
+    bill.destroy
+    respond_to do |format|
+      format.html { redirect_to billing_detail_path, notice: "Bill was successfully destroyed." }
+      format.json { head :no_content }
+    end
+  end
   private
 
   def create_records(bill_id, user_ids)
