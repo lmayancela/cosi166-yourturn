@@ -33,7 +33,6 @@ class StaticPagesController < ApplicationController
   def billing_detail
     @bills = {}
     current_user.house.users.each do |user|
-      next unless user != current_user
 
       @bills[user] = []
       user.bills.each do |bill|

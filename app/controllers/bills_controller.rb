@@ -11,12 +11,23 @@ class BillsController < ApplicationController
     @bill = Bill.new(bill_params)
     if @bill.save && BillRecord.create!(bill_id: @bill.id, user_id: current_user.id)
       flash[:success] = "Your bill for #{@bill.name}is uploaded!"
-      redirect_to current_user
+      redirect_to billing_detail_path
     else
       render 'new'
     end
   end
 
+  def destroy
+    bill = Bill.find(params["id"])
+    bill.bill_record.each do |record|
+      record.destroy
+    end
+    bill.destroy
+    respond_to do |format|
+      format.html { redirect_to billing_detail_path, notice: "Bill was successfully destroyed." }
+      format.json { head :no_content }
+    end
+  end
   private
 
   def bill_params

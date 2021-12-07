@@ -1,11 +1,11 @@
-<div class="modal-body">
+<div class="modal-header">
   <table class="table">
     <thead>
       <tr>
-        <th scope="col">Bill Description</th>
-        <th scope="col">Paid by</th>
-        <th scope="col">Amount</th>
-        <th scope="col">Due Date</th>
+        <th >Bill Description</th>
+        <th >Paid by</th>
+        <th >Amount</th>
+        <th >Due Date</th>
       </tr>
     </thead>
     <tbody>
@@ -16,6 +16,9 @@
             <td> <%= user.id %> </td>
             <td> <%= bill.amount %> </td>
             <td> <%= bill.due_date %> </td>
+            <% if author_of(bill)%>
+              <td><%= link_to 'Destroy', bill, method: :delete, data: { confirm: 'Are you sure?' }%></td>
+            <% end %>
           </tr>
         <% end %>
       <% end %>
