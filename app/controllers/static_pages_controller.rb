@@ -3,43 +3,40 @@
 require 'json'
 
 class StaticPagesController < ApplicationController
+  def intro; end
+
   def home
-    @tasks_test = extract_valid_dates
-    @date = Date.today
+    if current_user.nil?
+      render 'intro'
+    else
+      @tasks_test = extract_valid_dates
+      @date = Date.today
+    end
   end
 
   def billing
     @balance = 0.0
     @usersplits = {}
+
     current_user.house.users.each do |user|
       split = 0.0
       if user != current_user
-
         user.bills.each do |bill|
-          @balance += bill.amount.to_f
-          split += bill.amount.to_f
+          split += bill.amount.to_f/bill.users.length
         end
       else
         user.bills.each do |bill|
-          split += bill.amount.to_f
+          @balance += bill.amount.to_f/bill.users.length
+          split += bill.amount.to_f/bill.users.length
         end
       end
-      @usersplits[user.name] = split if user.bills.length >= 1
+      @usersplits[user.id] = split if user.bills.length >= 1
     end
-    @balance /= current_user.house.users.length
     @balance = @balance.floor(2)
   end
 
   def billing_detail
-    @bills = {}
-    current_user.house.users.each do |user|
-
-      @bills[user] = []
-      user.bills.each do |bill|
-        @bills[user] << bill
-      end
-    end
-    @bills
+    @bills = current_user.bills
   end
 
   def setting; end
@@ -93,8 +90,8 @@ class StaticPagesController < ApplicationController
     }
 
     curr_date = Date.today
-    # tasks = current_user.tasks
-    Task.find_each do |task|
+    tasks = current_user.house.tasks
+    tasks.each do |task|
       task_date = Date.parse(task.due_date.to_s)
       days_apart = (task_date - curr_date).to_i
       tasks_per_day[days_apart] << task.id if days_apart.between?(0, 7)
