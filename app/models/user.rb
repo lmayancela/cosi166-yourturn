@@ -6,6 +6,7 @@ class User < ApplicationRecord
   has_many :tasks, through: :task_record
   has_many :bill_record
   has_many :bills, through: :bill_record
+  has_one_attached :profile_pic
 
   before_save { self.email = email.downcase }
   validates :name, presence: true, length: { maximum: 50 }

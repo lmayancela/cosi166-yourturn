@@ -8,11 +8,18 @@ class BillsController < ApplicationController
     @users = current_user.house.users
   end
 
+  def show
+    @bill = Bill.find(params["id"])
+  end
+  
   def create
     params = bill_params
     due_date = "#{params['due_date(1i)']}/#{params['due_date(2i)']}/#{params['due_date(3i)']}"
     @bill = Bill.new(name: params['name'], amount: params['amount'], due_date: due_date)
     if @bill.save
+      b = Bill.find(@bill.id)
+      b.thumbnail = params['thumbnail']
+      b.save
       bill_records = create_records(@bill.id, params['users'] - [''])
       BillRecord.import(bill_records)
       flash[:success] = "Your bill for #{@bill.name}is uploaded!"
@@ -46,6 +53,6 @@ class BillsController < ApplicationController
   end
   
   def bill_params
-    params.require(:bill).permit(:name, :amount, :due_date, users: [])
+    params.require(:bill).permit(:name, :amount, :due_date, :thumbnail, users: [])
   end
 end

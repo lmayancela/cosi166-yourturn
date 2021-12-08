@@ -3,7 +3,7 @@
 
 <div class="row justify-content-center">
   <div class="col-md-6 col-md-offset-3">
-    <%= form_with(model: @user, local: true) do |f| %>
+    <%= form_with(model: @user, local: true, multipart: true) do |f| %>
       <%= render 'shared/error_messages' %>
 
       <%= f.label :name %>
@@ -17,6 +17,11 @@
 
       <%= f.label :password_confirmation, "Confirmation" %>
       <%= f.password_field :password_confirmation, class: 'form-control' %>
+
+      <div class="mb-6">
+        <%= f.label :profile_pic, "Profile Picture!", class: "label"%>
+        <%= f.file_field :profile_pic %>
+      </div>
 
       <%= f.submit "Create my account", class: "btn btn-primary" %>
     <% end %>

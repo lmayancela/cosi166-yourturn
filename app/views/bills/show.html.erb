@@ -1,0 +1,18 @@
+<div class="card col-sm-6 border" style="width: 36rem;"> 
+    <% if @bill.thumbnail.present? %>
+          <div><%= image_tag(@bill.thumbnail, height: '30%', width: '30%') %></div>
+    <% end %>
+    <div class="card-header">
+      <%= @bill.name %>
+    </div>
+    <div class="card-body">
+      <h5 class="card-title"> Amount: </h5>
+      <p class="card-text"> <%= @bill.amount.to_i / @bill.users.length.to_i %> </p>
+      <br>
+      <h5 class="card-title"> Due Date: </h5>
+      <p class="card-text"> <%= @bill.due_date %> </p>
+      <% if author_of(@bill)%>
+        <h5 class="card-title"><%= link_to 'Destroy', @bill, method: :delete, data: { confirm: 'Are you sure?' }%></h5>
+      <% end %>
+    </div>
+</div>

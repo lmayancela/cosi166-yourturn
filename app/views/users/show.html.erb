@@ -16,7 +16,9 @@
     <aside class="col-md-4">
       <section class="user_info">
         <h1>
-          <%= gravatar_for @user %>
+          <% if @user.profile_pic.present? %>
+            <div><%= image_tag(@user.profile_pic, height: '30%', width: '30%') %></div>
+          <% end %>
           <%= @user.name %>
         </h1>
       </section>
