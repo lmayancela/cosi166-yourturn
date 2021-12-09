@@ -76,3 +76,8 @@ gem 'redis-session-store'
 gem 'responders'
 gem 'rexml'
 gem 'stimulus_reflex', '~> 3.4'
+
+gem 'sidekiq', '~> 6.0', '>= 6.0.1'
+gem 'stripe'
+gem 'omniauth', "~> 1.9"
+gem 'omniauth-stripe-connect'

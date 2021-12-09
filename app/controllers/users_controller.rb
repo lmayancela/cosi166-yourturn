@@ -7,6 +7,12 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @link = Stripe::AccountLink.create(
+      account: @user.uid,
+      refresh_url: 'http://127.0.0.1:3000/users/'+ @user.id.to_s,
+      return_url: 'http://127.0.0.1:3000/users/'+ @user.id.to_s,
+      type: 'account_onboarding',
+    )
   end
 
   def create
@@ -15,7 +21,15 @@ class UsersController < ApplicationController
       reset_session
       log_in @user
       flash[:success] = 'Welcome to YourTurn!'
-      redirect_to @user
+      account = Stripe::Account.create(type:'standard')
+      @user.update(uid: account.id)
+      link = Stripe::AccountLink.create(
+      account: @user.uid,
+      refresh_url: 'http://127.0.0.1:3000/users/'+ @user.id.to_s,
+      return_url: 'http://127.0.0.1:3000/users/'+ @user.id.to_s,
+      type: 'account_onboarding',
+      )
+      redirect_to link["url"]
     else
       render 'new'
     end

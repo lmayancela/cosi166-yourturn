@@ -2,6 +2,6 @@
 
 module StaticPagesHelper
   def author_of(resource)
-    logged_in? && resource.users.include?(User.find_by(id: current_user.id))
+    logged_in? && resource.creator_id.to_i == current_user.id
   end
 end

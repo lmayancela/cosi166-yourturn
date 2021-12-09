@@ -12,16 +12,36 @@ class BillsController < ApplicationController
     @bill = Bill.find(params["id"])
   end
   
+
+  def pay
+    bill = Bill.find(params['id'])
+    session = Stripe::Checkout::Session.create({
+      payment_method_types: ['card'],
+      line_items: [{
+        name: bill.name,
+        amount: bill.amount.to_i * 100/bill.users.length,
+        currency: 'usd',
+        quantity: 1,
+      }],
+      payment_intent_data: {
+        application_fee_amount: 0,
+      },
+      mode: 'payment',
+      success_url: 'http://127.0.0.1:3000/success/'+ bill.id.to_s,
+      cancel_url: 'http://127.0.0.1:3000/billing',
+    }, {stripe_account: User.find(bill.creator_id).uid})
+
+    redirect_to session.url
+  end
+
   def create
     params = bill_params
     due_date = "#{params['due_date(1i)']}/#{params['due_date(2i)']}/#{params['due_date(3i)']}"
-    @bill = Bill.new(name: params['name'], amount: params['amount'], due_date: due_date)
+    @bill = Bill.new(name: params['name'], amount: params['amount'], users: current_user.house.users, due_date: due_date, creator_id: current_user.id)
     if @bill.save
       b = Bill.find(@bill.id)
       b.thumbnail = params['thumbnail']
       b.save
-      bill_records = create_records(@bill.id, params['users'] - [''])
-      BillRecord.import(bill_records)
       flash[:success] = "Your bill for #{@bill.name}is uploaded!"
       redirect_to billing_detail_path
     else
@@ -53,6 +73,6 @@ class BillsController < ApplicationController
   end
   
   def bill_params
-    params.require(:bill).permit(:name, :amount, :due_date, :thumbnail, users: [])
+    params.require(:bill).permit(:name, :amount, :due_date, :thumbnail)
   end
 end

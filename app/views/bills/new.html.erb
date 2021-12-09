@@ -19,10 +19,6 @@
         <%= f.file_field :thumbnail %>
       </div>
 
-      <%= f.label :users %>
-      <p> Hold the shift key to select multiple users </p>
-      <%= f.select(:users, @users.collect {|u| [ u.name, u.id ] }, {}, { :multiple => true, :size => 5 }) %>
-
       <%= f.submit "Create my bill", class: "btn btn-primary" %>
     <% end %>
   </div>

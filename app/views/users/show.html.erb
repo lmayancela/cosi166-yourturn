@@ -1,5 +1,13 @@
 <% provide(:title, @user.name) %>
 
+
+<div>
+  <% if Stripe::Account.retrieve(@user.uid)['charges_enabled']%>
+    <h4>Successfully connected to Stripe 👌</h4>
+  <% else %>
+    <%= link_to "connect to Stripe", @link.url%>
+    <% end %>
+</div>
 <% if @user.house_id == 1%>
   <br>
   <br>
@@ -24,7 +32,9 @@
       </section>
     </aside>
   </div>
+  
   <div>
     <%= link_to 'Go to a new House!', edit_user_path %>
   </div>
 <% end %>
+

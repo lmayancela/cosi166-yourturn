@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   get '/house_appliance', to: 'static_pages#house_appliance'
   get '/setting', to: 'static_pages#setting'
   get '/contact', to: 'static_pages#contact'
+  get '/success/:id', to: 'static_pages#success'
   # routes for sign up and login
   get '/signup', to: 'users#new'
   get 'sign_up', to: 'registrations#new'
@@ -21,6 +22,7 @@ Rails.application.routes.draw do
   get '/login', to: 'sessions#new'
   post '/login', to: 'sessions#create'
   get '/logout', to: 'sessions#destroy'
+  post '/bills/:id', to: 'bills#pay'
 
   get 'billing_detail', to: 'static_pages#billing_detail'
   get 'display/:date/:ids', to: 'static_pages#display', as: 'display'

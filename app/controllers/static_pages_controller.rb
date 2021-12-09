@@ -16,27 +16,40 @@ class StaticPagesController < ApplicationController
 
   def billing
     @balance = 0.0
-    @usersplits = {}
 
-    current_user.house.users.each do |user|
-      split = 0.0
-      if user != current_user
-        user.bills.each do |bill|
-          split += bill.amount.to_f/bill.users.length
-        end
-      else
-        user.bills.each do |bill|
-          @balance += bill.amount.to_f/bill.users.length
-          split += bill.amount.to_f/bill.users.length
-        end
+    current_user.bills.each do |bill|
+      if bill.creator_id.to_i != current_user.id
+        @balance += bill.amount.to_f/current_user.house.users.length
       end
-      @usersplits[user.id] = split if user.bills.length >= 1
     end
-    @balance = @balance.floor(2)
+    
+    @balance
+  end
+
+  def success   
+    bill = Bill.find(params["id"])
+
+    bill.bill_record.each do |record|
+
+      if record.user.id == current_user.id
+        puts "destroyed"
+        record.destroy
+      end
+    end
   end
 
   def billing_detail
-    @bills = current_user.bills
+    @bills = {}
+    current_user.house.users.each do |user|
+
+      @bills[user] = []
+      user.bills.each do |bill|
+        if bill.creator_id.to_i == user.id
+          @bills[user] << bill
+        end
+      end
+    end
+    @bills
   end
 
   def setting; end

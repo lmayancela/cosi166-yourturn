@@ -2,25 +2,27 @@
 
 <div class="jumbotron center">
   <h1>Bills for <%= current_user.name %></h1>
-  <p> There are <strong> <%= @bills.length %> </strong> bills for this user </p>
+  <p> There are <strong> <%= current_user.bills.length %> </strong> bills for this user </p>
 </div>
 
 <br>
 
 <div class = "row">
-  <% @bills.each do |bill| %>
-    <div class="card col-sm-6 border" style="width: 36rem;"> 
-      <div class="card-header">
-        <%= bill.name %>
+  <% @bills.each do |user,bills| %>
+    <% bills.each do |bill| %>
+      <div class="card col-sm-6 border" style="width: 36rem;"> 
+        <div class="card-header">
+          <%= user.name %>
+        </div>
+        <div class="card-body">
+          <h5 class="card-title"> Amount: </h5>
+          <p class="card-text"> <%= bill.amount.to_i / current_user.house.users.length.to_i %> </p>
+          <br>
+          <h5 class="card-title"> Due Date: </h5>
+          <p class="card-text"> <%= bill.due_date %> </p>
+          <h5 class="card-title"><%= link_to 'Show', bill %></h5>
+        </div>
       </div>
-      <div class="card-body">
-        <h5 class="card-title"> Amount: </h5>
-        <p class="card-text"> <%= bill.amount.to_i / bill.users.length.to_i %> </p>
-        <br>
-        <h5 class="card-title"> Due Date: </h5>
-        <p class="card-text"> <%= bill.due_date %> </p>
-        <h5 class="card-title"><%= link_to 'Show', bill %></h5>
-      </div>
-    </div>
+    <% end %>
   <% end %>
 </div>
