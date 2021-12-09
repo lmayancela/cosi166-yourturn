@@ -19,10 +19,9 @@ class StaticPagesController < ApplicationController
 
     current_user.bills.each do |bill|
       if bill.creator_id.to_i != current_user.id
-        @balance += bill.amount.to_f/current_user.house.users.length
+        @balance += bill.amount.to_f
       end
-    end
-    
+    end  
     @balance
   end
 

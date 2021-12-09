@@ -15,11 +15,13 @@ class BillsController < ApplicationController
 
   def pay
     bill = Bill.find(params['id'])
+    pay_amount = bill.amount.to_f * 100
+    pay_amount = pay_amount.to_i
     session = Stripe::Checkout::Session.create({
       payment_method_types: ['card'],
       line_items: [{
         name: bill.name,
-        amount: bill.amount.to_i * 100/bill.users.length,
+        amount: pay_amount,
         currency: 'usd',
         quantity: 1,
       }],
@@ -37,7 +39,9 @@ class BillsController < ApplicationController
   def create
     params = bill_params
     due_date = "#{params['due_date(1i)']}/#{params['due_date(2i)']}/#{params['due_date(3i)']}"
-    @bill = Bill.new(name: params['name'], amount: params['amount'], users: current_user.house.users, due_date: due_date, creator_id: current_user.id)
+    share = params['amount'].to_f/current_user.house.users.length
+    share = share.floor(2).to_s
+    @bill = Bill.new(name: params['name'], amount: share, users: current_user.house.users, due_date: due_date, creator_id: current_user.id)
     if @bill.save
       b = Bill.find(@bill.id)
       b.thumbnail = params['thumbnail']
