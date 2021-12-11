@@ -29,8 +29,8 @@ class BillsController < ApplicationController
         application_fee_amount: 0,
       },
       mode: 'payment',
-      success_url: 'http://127.0.0.1:3000/success/'+ bill.id.to_s,
-      cancel_url: 'http://127.0.0.1:3000/billing',
+      success_url: request.base_url + '/success/'+ bill.id.to_s,
+      cancel_url: billing_url,
     }, {stripe_account: User.find(bill.creator_id).uid})
 
     redirect_to session.url

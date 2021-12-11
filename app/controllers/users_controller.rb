@@ -25,8 +25,8 @@ class UsersController < ApplicationController
       @user.update(uid: account.id)
       link = Stripe::AccountLink.create(
       account: @user.uid,
-      refresh_url: 'http://127.0.0.1:3000/users/'+ @user.id.to_s,
-      return_url: 'http://127.0.0.1:3000/users/'+ @user.id.to_s,
+      refresh_url: request.base_url + '/users/'+ @user.id.to_s,
+      return_url: request.base_url + '/users/'+ @user.id.to_s,
       type: 'account_onboarding',
       )
       redirect_to link["url"]
