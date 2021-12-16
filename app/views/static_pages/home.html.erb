@@ -1,38 +1,67 @@
-<section class="bg-light py-5">
-    <div class="container px-5 my-5">
-      <div class="text-center mb-5">
-          <h1 class="fw-bolder"><%= @date.strftime('%A %b %d') %></h1>
-          <p class="lead fw-normal text-muted mb-0">Welcome Back!</p>
-          <p class="lead fw-normal text-muted mb-0">There are <strong> <%= @tasks_test[0].length %> </strong> tasks due today</p>
-          <br>
-          <% if @tasks_test[0].length > 0 %>
-            <%= link_to "Click here to view tasks", display_path(date: @date.to_s, ids: @tasks_test[0].join("-")), class: 'btn btn-primary btn-lg' %>
-          <% end %>
-      </div>
-      <div class="text-center mb-5">
-          <h1 class="fw-bolder">Upcoming Tasks</h1>
-          <div class="testimonial-group">
-            <div class="row text-center">
+<section>
+<div class="mt-5 w-100 h-100">
+  <div class="text-center mb-5">
+      <h1 class="fw-bolder"><%= @date.strftime('%A %b %d') %></h1>
+      <p class="lead fw-normal text-muted mb-0">Welcome Back!</p>
+      <p class="lead fw-normal text-muted mb-0">There are <strong> <%= @tasks_test[0].length %> </strong> tasks due today</p>
+      <br>
+      <% if @tasks_test[0].length > 0 %>
+        <%= link_to "Click here to view tasks", display_path(date: @date.to_s, ids: @tasks_test[0].join("-")), class: 'btn btn-primary btn-lg' %>
+      <% else %>
+        <button type="button" class="btn btn-primary btn-lg" disabled>No Tasks</button>
+      <% end %>
+  </div>
+  <div class="text-center bg-dark">
+      <h1 class="fw-bolder p-3 bg-light">Upcoming Tasks</h1>
+      <div class="center bg-dark py-5">
+        <div class="w-100 h-100">
+          <div class="carousel slide" data-bs-ride="carousel" id="taskCarousel">
+            <div class="carousel-indicators">
               <% (1..7).each do |future_day| %>
-                <div class="col-4">
-                  <div class="col-spaced rounded">
-                    <h2 class="date-text"> <%= (@date+future_day).strftime('%a %b %d') %> </h2>
-                    <h3> <strong> <%= @tasks_test[future_day].length %> </strong> tasks due </h3>
-                    <% if @tasks_test[future_day].length > 0 %>
-                      <%= link_to "View Tasks", display_path(date: (@date+future_day).to_s, ids: @tasks_test[future_day].join("-")), class: 'btn btn-primary btn-lg'%>
-                    <% else %>
-                      <button type="button" class="btn btn-primary btn-lg" disabled>No Tasks</button>
-                    <% end %>
-                  </div>
-                </div>
+                <button type="button" data-bs-target="#taskCarousel" data-bs-slide-to="<%= future_day - 1 %>" class="<%= 'active' if (future_day - 1) == 0 %>"></li>
               <% end %>
             </div>
+
+            <div class="carousel-inner">
+              <% (1..7).each do |future_day| %>
+              <div class="carousel-item text-center p-10 col-spaced <%= 'active' if future_day == 1 %>">
+                <div class="p-5 rounded-lg m-3 text-light">
+                  <h2 class="fw-bolder date-text py-1"> <%= (@date+future_day).strftime('%a %b %d') %> </h2>
+                  <h3 class="py-1"> <strong> <%= @tasks_test[future_day].length %> </strong> tasks due </h3>
+                  <br>
+                  <% if @tasks_test[future_day].length > 0 %>
+                  <%= link_to "View Tasks", display_path(date: (@date+future_day).to_s, ids: @tasks_test[future_day].join("-")), class: 'btn btn-primary btn-lg'%>
+                  <% else %>
+                  <button type="button" class="btn btn-primary btn-lg" disabled>No Tasks</button>
+                  <% end %>
+                </div>
+              </div>
+              <% end %>
+            </div>
+
+            <button class="carousel-control-prev" type="button" data-bs-target="#taskCarousel" data-bs-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Previous</span>
+            </button>
+            <a class="carousel-control-next" type="button" data-bs-target="#taskCarousel" data-bs-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Next</span>
+            </a>
           </div>
-          <br>
-          <div class="center">
-            <%= link_to "Create a new task", new_task_path, class: 'btn btn-primary btn-lg' %>
-          </div>
+        </div>
       </div>
-      
-      
+      <br>
+      <div class="center p-5">
+        <%= link_to "Create a new task", new_task_path, class: 'btn btn-primary btn-lg' %>
+      </div>
+  </div> 
 </section>
+
+<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
+<script>
+  $( document ).ready(function(){
+    $('#taskCarousel').carousel();
+  });
+</script>
