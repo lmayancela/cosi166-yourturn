@@ -1,11 +1,11 @@
-<div class="jumbotron center">
-  <h1>Tasks for <%= @date.strftime('%A %b %d') %></h1>
-  <p> There are <strong> <%= @tasks.length %> </strong> tasks due on this day </p>
-</div>
-
-<br>
-
-<div class = "row">
+<!-- Pricing section-->
+<section class="bg-light py-5">
+  <div class="container px-5 my-5">
+    <div class="text-center mb-5">
+        <h1 class="fw-bolder">Tasks for <%= @date.strftime('%A %b %d') %></h1>
+        <p class="lead fw-normal text-muted mb-0">There are <strong> <%= @tasks.length %> </strong> tasks due on this day</p>
+    </div>
+  <div class = "row">
   <% @tasks.each do |task| %>
     <div class="card col-sm-6 border <%= 'border-primary' if task.priority == 1 %> <%= 'border-warning' if task.priority == 2 %> <%= 'border-danger' if task.priority == 3 %>" style="width: 36rem;"> 
       <div class="card-header">
@@ -28,6 +28,5 @@
     </div>
   <% end %>
 </div>
-
-
-
+    
+</section>

@@ -1,9 +1,25 @@
+<!-- Page content-->
+<section class="py-5">
+  <div class="container px-5">
+    <!-- Contact form-->
+    <div class="bg-light rounded-3 py-5 px-4 px-md-5 mb-5">
+      <div class="text-center mb-5">
+          <div class="feature bg-primary bg-gradient text-white rounded-3 mb-3"><i class="bi bi-envelope"></i></div>
+          <h1 class="fw-bolder">Join House</h1>
+          <p class="lead fw-normal text-muted mb-0">Enter the id of the house</p>
+      </div>
+      <div class="row gx-5 justify-content-center">
+          <div class="col-lg-8 col-xl-6">
+              <%= form_with(model: @user, local: true) do |f| %>
+                <%= render 'shared/error_messages', object: @user %>
 
-<%= form_with(model: @user, local: true) do |f| %>
-  <%= render 'shared/error_messages', object: @user %>
+                <%= f.label :house_id %>
+                <%= f.text_field :house_id, class: 'form-control' %>
 
-  <%= f.label :house_id %>
-  <%= f.text_field :house_id, class: 'form-control' %>
-
-  <%= f.submit yield(:button_text), class: "btn btn-primary" %>
-<% end %>
+                <%= f.submit "Swtich", class: "btn btn-primary" %>
+              <% end %>
+          </div>
+      </div>
+    </div>
+  </div>
+</section>

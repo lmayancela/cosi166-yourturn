@@ -1,40 +1,51 @@
-<% provide(:title, @user.name) %>
-
-
-<div>
-  <% if Stripe::Account.retrieve(@user.uid)['charges_enabled']%>
-    <h4>Successfully connected to Stripe 👌</h4>
-  <% else %>
-    <%= link_to "connect to Stripe", @link.url%>
-    <% end %>
-</div>
-<% if @user.house_id == 1%>
-  <br>
-  <br>
-  <div class="text-center">
-    <%= link_to 'Create Your House!', new_house_path, :class => "btn btn-outline-primary"%> 
-  </div>
-  <div class="text-center">
-    <%= link_to 'Join a House!', edit_user_path, :class => "btn btn-outline-primary" %>
-  </div>
-  <br>
-  <br>
-<% else %>
-  <div class="row">
-    <aside class="col-md-4">
-      <section class="user_info">
-        <h1>
+<!-- Page content-->
+<section class="py-5">
+  <div class="container px-5">
+    <!-- Contact form-->
+    <div class="bg-light rounded-3 py-5 px-4 px-md-5 mb-5">
+      <div class="text-center mb-5">
           <% if @user.profile_pic.present? %>
-            <div><%= image_tag(@user.profile_pic, height: '30%', width: '30%') %></div>
+             <div><%= image_tag(@user.profile_pic, height: '150', width: '150') %></div>
           <% end %>
-          <%= @user.name %>
-        </h1>
-      </section>
-    </aside>
+          <h1 class="fw-bolder">Welcome <%= current_user.name%>!</h1>
+          <p class="lead fw-normal text-muted mb-0">您好 Bonjour  こんにちは  Hola  Hello</p>
+      </div>
+      <div class="row gx-5 justify-content-center">
+          <div class="col-lg-8 col-xl-6">
+            <% if Stripe::Account.retrieve(@user.uid)['charges_enabled']%>
+              <h4>Successfully connected to Stripe 👌</h4>
+            <% else %>
+              <div class="text-center">
+                <p class="lead fw-normal text-muted mb-0">Connect to Stripe for future payment</p>
+                <br>
+                <%= link_to "connect to Stripe", @link.url, :class => "btn btn-outline-primary"%>
+              </div>
+            <% end %>
+            <br>
+            <% if @user.house_id == 1%>
+              <div class="text-center">
+                <p class="lead fw-normal text-muted mb-0">Join or Create a House</p>
+                <br>
+              </div>
+              <div class="text-center">
+                <%= link_to 'Create Your House!', new_house_path, :class => "btn btn-outline-primary"%> 
+              </div>
+              <div class="text-center">
+                <%= link_to 'Join a House!', edit_user_path, :class => "btn btn-outline-primary" %>
+              </div>
+              <br>
+              <br>
+            <% else %>
+              <div class="text-center">
+                <p class="lead fw-normal text-muted mb-0">Switch your house if you want</p>
+                <br>
+                <%= link_to 'Go to a new House!', edit_user_path, :class => "btn btn-outline-primary" %>
+              </div>
+            <% end %>
+          </div>
+      </div>
+    </div>
   </div>
-  
-  <div>
-    <%= link_to 'Go to a new House!', edit_user_path %>
-  </div>
-<% end %>
+</section>
+
 

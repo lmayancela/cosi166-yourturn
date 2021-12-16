@@ -1,28 +1,35 @@
-<div class="card col-sm-6 border" style="width: 36rem;"> 
-    <% if @bill.thumbnail.present? %>
-          <div><%= image_tag(@bill.thumbnail, height: '30%', width: '30%') %></div>
-    <% end %>
-    <div class="card-header">
-      <%= @bill.name %>
-    </div>
-    <div class="card-body">
-      <h5 class="card-title"> Amount: </h5>
-      <p class="card-text"> <%= @bill.amount %> </p>
-      <br>
-      <h5 class="card-title"> Due Date: </h5>
-      <p class="card-text"> <%= @bill.due_date %> </p>
-      <% if author_of(@bill)%>
-        <h5 class="card-title"><%= link_to 'Destroy', @bill, method: :delete, data: { confirm: 'Are you sure?' }%></h5>
-      <% end %>
-      <% if current_user.bills.include?(@bill) && current_user.id != @bill.creator_id.to_i%>
-        <% if Stripe::Account.retrieve(current_user.uid)['charges_enabled']%>
-          <%= link_to 'Pay now!', @bill, method: :post, data: { confirm: 'Are you sure?' } %>
-        <% else %>
-          <%= link_to "connect to Stripe", @link.url%>
-        <% end %>
-        <%= link_to 'I already paid!', request.base_url + '/success/'+ @bill.id.to_s, data: { confirm: 'Are you sure?' } %>
-      <% else %>
-        You don't have to pay for this bill
-      <% end %>
-    </div>
-</div>
+<!-- Page content-->
+<section class="py-5">
+  <div class="container px-5">
+    <!-- Contact form-->
+    <div class="bg-light rounded-3 py-5 px-4 px-md-5 mb-5">
+      <div class="text-center mb-5">
+          <% if @bill.thumbnail.present? %>
+            <div><%= image_tag(@bill.thumbnail, height: '30%', width: '30%') %></div>
+          <% end %>
+          <h1 class="fw-bolder"><%= @bill.name %></h1>
+          <p class="lead fw-normal text-muted mb-0">Amount: <%= @bill.amount %></p>
+          <br>
+          <p class="lead fw-normal text-muted mb-0">Due Date: <%= @bill.due_date %></p>
+          <br>
+          <% if author_of(@bill)%>
+            <%= link_to 'Destroy', @bill, method: :delete, :class => "btn btn-outline-primary", data: { confirm: 'Are you sure?' }%>
+          <% end %>
+          <br>
+          <br>
+          <% if current_user.bills.include?(@bill) && current_user.id != @bill.creator_id.to_i%>
+            <% if Stripe::Account.retrieve(current_user.uid)['charges_enabled']%>
+              <%= link_to 'Pay now!', @bill, method: :post, :class => "btn btn-outline-primary", data: { confirm: 'Are you sure?' } %>
+            <% else %>
+              <%= link_to "connect to Stripe", @link.url, :class => "btn btn-outline-primary"%>
+            <% end %>
+            <%= link_to 'I already paid!', request.base_url + '/success/'+ @bill.id.to_s, :class => "btn btn-outline-primary", data: { confirm: 'Are you sure?' } %>
+          <% else %>
+            <p class="lead fw-normal text-muted mb-0">Your don't have to pay for this bill</p>
+          <% end %>
+      </div>
+    </div> 
+  </div>
+</section>
+
+

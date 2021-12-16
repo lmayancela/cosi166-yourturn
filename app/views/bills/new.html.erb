@@ -1,25 +1,36 @@
-<h1>New Bill</h1>
-
-<div class="row justify-content-center">
-  <div class="col-md-6 col-md-offset-3">
-    <%= form_with(model: @bill, local: true, multipart: true) do |f| %>
-      <%= render 'shared/bill_error_messages' %>
-
-      <%= f.label :name %>
-      <%= f.text_field :name, class: 'form-control' %>
-
-      <%= f.label :amount %>
-      <%= f.text_field :amount, class: 'form-control' %>
-
-      <%= f.label :due_date %>
-      <%= f.date_select :due_date %>
-
-      <div class="mb-6">
-        <%= f.label :thumbnail, "Bill Thumbnail", class: "label"%>
-        <%= f.file_field :thumbnail %>
+<!-- Page content-->
+<section class="py-5">
+  <div class="container px-5">
+    <!-- Contact form-->
+    <div class="bg-light rounded-3 py-5 px-4 px-md-5 mb-5">
+      <div class="text-center mb-5">
+          <div class="feature bg-primary bg-gradient text-white rounded-3 mb-3"><i class="bi bi-envelope"></i></div>
+          <h1 class="fw-bolder">Upload Bill</h1>
+          <p class="lead fw-normal text-muted mb-0">Enter info of the bill you want to upload</p>
       </div>
+      <div class="row gx-5 justify-content-center">
+          <div class="col-lg-8 col-xl-6">
+            <%= form_with(model: @bill, local: true, multipart: true) do |f| %>
+              <%= render 'shared/bill_error_messages' %>
 
-      <%= f.submit "Create my bill", class: "btn btn-primary" %>
-    <% end %>
+              <%= f.label :name %>
+              <%= f.text_field :name, class: 'form-control' %>
+
+              <%= f.label :amount %>
+              <%= f.text_field :amount, class: 'form-control' %>
+
+              <%= f.label :due_date %>
+              <%= f.date_select :due_date %>
+
+              <div class="mb-6">
+                <%= f.label :thumbnail, "Bill Pic", class: "label"%>
+                <%= f.file_field :thumbnail %>
+              </div>
+              <br>
+              <%= f.submit "Create my bill", class: "btn btn-primary" %>
+            <% end %>
+          </div>
+      </div>
+    </div>
   </div>
-</div>
+</section>
