@@ -88,7 +88,8 @@ ActiveRecord::Schema.define(version: 2021_12_09_041700) do
   end
 
   create_table "posts", force: :cascade do |t|
-    t.string "username", default: "wentao", null: false
+    t.string "user_name", default: "guest", null: false
+    t.integer "house_id", default: 1, null: false
     t.string "body", null: false
     t.integer "likes_count", default: 0, null: false
     t.integer "reposts_count", default: 0, null: false

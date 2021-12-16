@@ -36,6 +36,9 @@ end
 Appliance.create(name: 'Washing Machine', house_id: 1, user_id: -1, used: false)
 Appliance.create(name: 'Dryer', house_id: 1, user_id: -1, used: false)
 Appliance.create(name: 'Dishwasher', house_id: 1, user_id: -1, used: false)
+Appliance.create(name: 'Sink', house_id: 1, user_id: -1, used: false)
+Appliance.create(name: 'Vacuum', house_id: 1, user_id: -1, used: false)
+Appliance.create(name: 'Stove', house_id: 1, user_id: -1, used: false)
 
 TaskRecord.create(task_id: 1, user_id: 1)
 TaskRecord.create(task_id: 2, user_id: 1)

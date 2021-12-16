@@ -19,6 +19,9 @@ class HousesController < ApplicationController
     Appliance.create(name: 'Washing Machine', house_id: @house.id, user_id: -1, used: false)
     Appliance.create(name: 'Dryer', house_id: @house.id, user_id: -1, used: false)
     Appliance.create(name: 'Dishwasher', house_id: @house.id, user_id: -1, used: false)
+    Appliance.create(name: 'Sink', house_id: @house.id, user_id: -1, used: false)
+    Appliance.create(name: 'Vacuum', house_id: @house.id, user_id: -1, used: false)
+    Appliance.create(name: 'Stove', house_id: @house.id, user_id: -1, used: false)
   end
 
   private
