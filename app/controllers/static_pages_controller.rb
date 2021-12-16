@@ -16,7 +16,16 @@ class StaticPagesController < ApplicationController
 
   def billing
     @balance = 0.0
-
+    @usersplit = {}
+    current_user.house.users do |user|
+      split = 0.0
+      user.bills.each do |bill|
+        if bill.creator_id == user.id
+          split += bill.amount
+        end
+      end
+      @usersplit[user.name] = split
+    end
     current_user.bills.each do |bill|
       if bill.creator_id.to_i != current_user.id
         @balance += bill.amount.to_f
