@@ -11,16 +11,13 @@
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
   </head>
   <% render 'layouts/shim' %>
-  <body class="d-flex flex-column min-vh-100>
-    <%= render 'layouts/header' %>
-    <div class="container">
-      <% flash.each do |message_type, message| %>
-        <div class="alert alert-<%= message_type %>"><%= message %></div>
-      <% end %>
+  <body class="d-flex flex-column min-vh-100">
+    <main class="flex-shrink-0">
+      <%= render 'layouts/header' %>
       <%= yield %>
-    </div>
+    </main>
+    <footer class="mt-auto">
+      <%= render 'layouts/footer' %>
+    </footer>
   </body>
-  <footer class="mt-auto">
-    <%= render 'layouts/footer' %>
-  </footer>
 </html>
