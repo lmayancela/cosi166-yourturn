@@ -1,23 +1,31 @@
-<h1>APPLIANCE</h1>
-<br>
-<div class="container">
-  <div class="row text-center">
-    <% @appliances.each do |appliance| %>
-      <div class="col-sm-4">
-        <div class="card" style="width: 25rem;">
-          <%= image_tag ("/assets/" + appliance.name.gsub(/[[:space:]]/, '').downcase + ".png"), height: '350', width: '350'%>
-          <div class="card-body">
-            <h5 class="card-title"><%= appliance.name %></h5>
-            <% if appliance.used == false %>
-              <%= button_to "Use", appliance_path(appliance.id), :class => "btn btn-primary", :method => :patch %>
-            <% elsif current_user.id == appliance.user_id %>
-              <%= button_to "Unlock", appliance_path(appliance.id), :class => "btn btn-primary", :method => :patch %>
-            <% else %>
-              <button type="button" class="btn btn-primary" disabled><%= User.find_by(id: appliance.user_id).name %> is using</button>
-            <% end %>
-          </div>
-        </div>
+<!-- Pricing section-->
+<section class="bg-light py-5">
+    <div class="container px-5 my-5">
+      <div class="text-center mb-5">
+          <h1 class="fw-bolder">Appliances Tracker</h1>
+          <p class="lead fw-normal text-muted mb-0">Know your appliances whenever you want</p>
       </div>
-    <% end %> 
-  </div>
-</div>
+      <div class="row gx-5 justify-content-center">
+        <% @appliances.each do |appliance| %>
+          <!-- Pricing card free-->
+          <div class="col-lg-6 col-xl-4">
+              <div class="card mb-5 mb-xl-0">
+                <div class="card-body p-5">          
+                  <%= image_tag ("/assets/" + appliance.name.gsub(/[[:space:]]/, '').downcase + ".png"), height: '255', width: '255'%>
+                  <h5 class="text-center"><%= appliance.name %></h5>
+                  <div class="d-grid">
+                    <% if appliance.used == false %>
+                      <%= button_to "Use", appliance_path(appliance.id), :class => "btn btn-outline-primary", :method => :patch %>
+                    <% elsif current_user.id == appliance.user_id %>
+                      <%= button_to "Unlock", appliance_path(appliance.id), :class => "btn btn-outline-primary", :method => :patch %>
+                    <% else %>
+                      <button type="button" class="btn btn-outline-primary" disabled><%= User.find_by(id: appliance.user_id).name %> is using</button>
+                    <% end %>
+                  </div>
+                </div>
+              </div>
+          </div>
+        <% end %> 
+      </div>
+    </div>
+</section>
