@@ -28,13 +28,26 @@ class StaticPagesController < ApplicationController
   def success   
     bill = Bill.find(params["id"])
 
+    delete = false
+    if bill.bill_record.length == 2
+      delete = true
+    end  
+    
     bill.bill_record.each do |record|
 
       if record.user.id == current_user.id
-        puts "destroyed"
+
         record.destroy
+
       end
     end
+
+    if delete
+      record = BillRecord.find_by(user_id: bill.creator_id, bill_id: bill.id)
+      record.destroy
+      bill.destroy
+    end
+    
   end
 
   def billing_detail

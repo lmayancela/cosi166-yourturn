@@ -1,28 +1,43 @@
-<br>
 
-<div class="jumbotron center">
-  <h1>Bills for <%= current_user.name %></h1>
-  <p> There are <strong> <%= current_user.bills.length %> </strong> bills for this user </p>
-</div>
+<section class="bg-light py-5">
+                <div class="container px-5 my-5">
+                    <div class="text-center mb-5">
+                        <h1 class="fw-bolder">Bills for <%= current_user.name %></h1>
+                        <p class="lead fw-normal text-muted mb-0">There are <strong> <%= current_user.bills.length %> </strong> bills! </p>
+                    </div>
+                    <div class="row gx-5 justify-content-center">
+                        <% @bills.each do |user,bills| %>
+                          <% bills.each do |bill| %>
+                            <div class="col-lg-6 col-xl-4">
+                              <div class="card mb-5 mb-xl-0">
+                                  <div class="card-body p-5">
+                                      <div class="small text-uppercase fw-bold text-muted">Amount: </div>
+                                      <div class="mb-3">
+                                          <span class="display-4 fw-bold">$<%= bill.amount %></span>
+                                      </div>
+                                      <ul class="list-unstyled mb-4">
+                                          <li class="mb-2">
+                                              <i class="bi bi-check text-primary"></i>
+                                              <strong>Due Date: </strong>
+                                          </li>
+                                          <li class="mb-2">
+                                              <i class="bi bi-check text-primary"></i>
+                                              <%= bill.due_date %>
+                                          </li>
+                                          <li class="mb-2">
+                                              <i class="bi bi-check text-primary"></i>
+                                              Unlimited public projects
+                                          </li>
+                                      </ul>
+                                      <div class="d-grid"><%= link_to 'Show', bill, :class => "btn btn-outline-primary" %></div>
+                                    </div>
+                                </div>
+                              </div>
+                          <% end %>
+                        <% end %>
+                       </div>
+                    </div>
+                </div>
+</section>
 
-<br>
-
-<div class = "row">
-  <% @bills.each do |user,bills| %>
-    <% bills.each do |bill| %>
-      <div class="card col-sm-6 border" style="width: 36rem;"> 
-        <div class="card-header">
-          <%= user.name %>
-        </div>
-        <div class="card-body">
-          <h5 class="card-title"> Amount: </h5>
-          <p class="card-text"> <%= bill.amount %> </p>
-          <br>
-          <h5 class="card-title"> Due Date: </h5>
-          <p class="card-text"> <%= bill.due_date %> </p>
-          <h5 class="card-title"><%= link_to 'Show', bill %></h5>
-        </div>
-      </div>
-    <% end %>
-  <% end %>
-</div>
+  

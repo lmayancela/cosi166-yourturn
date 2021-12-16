@@ -10,6 +10,7 @@
             <li class="nav-item"><%= link_to "Bill", billing_path, :class => "nav-link"%></li>
             <li class="nav-item"><%= link_to "Appliance", appliances_url, :class => "nav-link"%></li>
             <li class="nav-item"><%= link_to "Message", posts_path, :class => "nav-link"%></li>
+            <li class="nav-item"><%= link_to "Settings", current_user, :class => "nav-link"%></li>
             <li class="nav-item"><%= link_to "Log out", logout_path, :class => "nav-link" %></li>
           <% else %>
             <li class="nav-item"><%= link_to "Log in", login_path, :class => "nav-link"%></li>
