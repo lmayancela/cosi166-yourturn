@@ -1,19 +1,28 @@
 <% provide(:title, "Log in") %>
-<h1>Log in</h1>
+<!-- Page content-->
+<section class="py-5">
+  <div class="container px-5">
+    <!-- Contact form-->
+    <div class="bg-light rounded-3 py-5 px-4 px-md-5 mb-5">
+      <div class="text-center mb-5">
+          <div class="feature bg-primary bg-gradient text-white rounded-3 mb-3"><i class="bi bi-envelope"></i></div>
+          <h1 class="fw-bolder">Welcome Back</h1>
+          <p class="lead fw-normal text-muted mb-0">您好 Bonjour  こんにちは  Hola  Hello</p>
+      </div>
+      <div class="row gx-5 justify-content-center">
+          <div class="col-lg-8 col-xl-6">
+              <%= form_with(url: login_path, scope: :session, local: true, id:"contactForm") do |f| %>
 
-<div class="row justify-content-center">
-  <div class="col-md-6 col-md-offset-3">
-    <%= form_with(url: login_path, scope: :session, local: true) do |f| %>
+                <%= f.label :email, for: "email" %>
+                <%= f.email_field :email, class: 'form-control' %>
 
-      <%= f.label :email %>
-      <%= f.email_field :email, class: 'form-control' %>
-
-      <%= f.label :password %>
-      <%= f.password_field :password, class: 'form-control' %>
-
-      <%= f.submit "Log in", class: "btn btn-primary" %>
-    <% end %>
-
-    <p>New user? <%= link_to "Sign up now!", signup_path %></p>
+                <%= f.label :password %>
+                <%= f.password_field :password, class: 'form-control' %>
+                <br>
+                <%= f.submit "Log in", class: "btn btn-primary btn-lg" %>
+              <% end %>
+          </div>
+      </div>
+    </div>
   </div>
-</div>
+</section>

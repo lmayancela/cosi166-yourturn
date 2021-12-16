@@ -1,9 +1,13 @@
-<div class="container">
-  <h1>Message Board</h1>
-
-  <div id="timeline">
-    <%= render partial: "post", collection: @posts %>
-  </div>
-
-  <%= render "form" %>
-</div>
+<section class="bg-light py-5">
+    <div class="container px-5 my-5">
+      <div class="text-center mb-5">
+          <h1 class="fw-bolder">Message Board</h1>
+          <p class="lead fw-normal text-muted mb-0">House Rules \ Reminders </p>
+      </div>
+      <div class="row gx-5 justify-content-center">
+        <div id="timeline">
+          <%= render partial: "post", collection: @posts %>
+        </div>
+        <%= render "form" %>
+      </div>
+</section>
